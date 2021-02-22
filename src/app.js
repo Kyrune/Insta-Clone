@@ -1,5 +1,5 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDom from 'react-dom';
-import App from './app';
+import App from './App';
 
 ReactDom.render(<App />, document.getElementById("root"))
