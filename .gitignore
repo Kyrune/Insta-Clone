@@ -1,2 +1,3 @@
 node_modules
 rules.txt
+src/lib/firebase.js
