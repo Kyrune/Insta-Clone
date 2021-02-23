@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Header from './header';
 import Image from './image';
 import Actions from './actions';
@@ -6,6 +8,9 @@ import Comments from './comments';
 
 export default function Post({ content }) {
     return (
-        <p>I am a post</p>
+        <div className="rounded col-span-4 border bg-white mb-16">
+            <Image src={content.imageSrc} caption={content.caption} />
+            <Footer username={content.username} caption={content.caption} />
+        </div>
     )
 }
