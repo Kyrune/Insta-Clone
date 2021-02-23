@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import * as ROUTES from '../constants/routes';
 import Header from '../components/header';
 import Timeline from '../components/timeline';
 import Sidebar from '../components/sidebar/index';
