@@ -20,14 +20,22 @@ export default function Profile({ username }) {
         // Caching here in localstorage so it doesn't make a network call that's already made previously
         async function getProfileInfoAndPhotos() {
             const [{ ...user }] = await getUserByUsername(username);
+            const photos = await getUserPhotosByUsername(username);
+
+            dispatch({ profile: user, photosCollection: photos, followerCount: user.followers.length});
         }
         getProfileInfoAndPhotos();
     }, [username]);
 
     return (
         <>
-            <Header />
-            <Photos />
+            <Header 
+                photosCollection={photosCollection.length}
+                profile={profile}
+                followerCount={followerCount}
+                setFollowerCount={dispatch}
+            />
+            <Photos photos={photosCollection} />
         </>
     )
 }
