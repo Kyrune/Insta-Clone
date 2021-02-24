@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 
@@ -21,4 +21,5 @@ const User = ({ username, fullName }) =>
         </Link>
     );
 
-export default User;
+// Memo memorizes the page to help with rendering
+export default memo(User);
