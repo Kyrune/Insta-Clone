@@ -14,6 +14,10 @@ const User = ({ username, fullName }) =>
                     alt="My profile"
                 />
             </div>
+            <div className="col-span-3">
+                <p className="font-bold text-sm">{username}</p>
+                <p className="text-sm">{fullName}</p>
+            </div>
         </Link>
     );
 
