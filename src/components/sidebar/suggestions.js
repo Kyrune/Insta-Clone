@@ -34,16 +34,21 @@ const Suggestions = ({ userId }) => {
     return !profiles ? (
         <Skeleton count={1} height={150} className="mt-5" />
     ) : profiles.length > 0 ? (
-        <div className="grid">
-            {profiles.map((profile) => (
-                <SuggestedProfile 
-                    key={profile.docId}
-                    userDocId={profile.docId}
-                    username={profile.username}
-                    profileId={profile.userId}
-                    userId={userId}
-                />
-            ))}
+        <div className="flex flex-col">
+            <div className="flex items-center align-items justify-between mb-2 mt-2">
+                <p className="font-bold text-gray text-sm">Suggestions for you</p>
+            </div>
+            <div className="grid gap-5 mt-4">
+                {profiles.map((profile) => (
+                    <SuggestedProfile 
+                        key={profile.docId}
+                        userDocId={profile.docId}
+                        username={profile.username}
+                        profileId={profile.userId}
+                        userId={userId}
+                    />
+                ))}
+            </div>
         </div>
     ) : null;
 }
