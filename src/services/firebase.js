@@ -1,5 +1,21 @@
 import { firebase, FieldValue } from '../lib/firebase';
 
+export async function isUserFollowingProfile(activeUsername, profileUserId) {
+    const result = await firebase
+        .firestore()
+        .collection('users')
+        .where('username', '==', activeUsername) // active logged in user
+        .where('following', 'array-contains', profileUserId)
+        .get();
+
+        const [response = {}] = result.docs.map((item) => ({
+            ...item.data(),
+            docId: item.id
+        }));
+
+        return !!response.fullName;
+}
+
 export async function doesUsernameExist(username) {
     const result = await firebase
         .firestore()
