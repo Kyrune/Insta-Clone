@@ -100,7 +100,7 @@ export async function updateUserFollowing(docId, profileId, isFollowingProfile) 
         .update({
             following: isFollowingProfile
                 ? FieldValue.arrayRemove(profileId)
-                : FieldValue.arrayUnion(followingUserId)
+                : FieldValue.arrayUnion(profileId)
         });
 }
 
@@ -110,7 +110,8 @@ export async function updateFollowedUserFollowers(docId, followingUserId, isFoll
         .collection('users')
         .doc(docId)
         .update({
-            following: isFollowingProfile
+            // May need to clear out followers/following in firebase data
+            followers: isFollowingProfile
                 ? FieldValue.arrayRemove(followingUserId)
                 : FieldValue.arrayUnion(followingUserId)
     });
