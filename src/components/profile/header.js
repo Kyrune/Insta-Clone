@@ -7,13 +7,13 @@ export default function Header({
     photosCount,
     followerCount: followers,
     setFollowerCount,
-    profile: { docId: profileDocId, userId: profileUserId, fullName, following = [] },
-    username
+    username: profileUsername,
+    profile: { docId: profileDocId, userId: profileUserId, fullName, following = [] }
 }) {
     const { user } = userUser();
     const [isFollowingProfile, setIsFollowingProfile] = useState(false);
     // You don't follow yourself
-    const activeBtnFollow = user.username && user.username !== username;
+    const activeBtnFollow = user && user.username && user.username !== profileUsername;
 
     // Toggle between follow and unfollow
     const handleToggleFollow = async () => {
@@ -40,12 +40,12 @@ export default function Header({
                 <img 
                     className="rounded-full h-40 w-40 flex"
                     alt={`${username} profile picture`}
-                    src={`/images/avatars/${username}.jpg`}
+                    src={`/images/avatars/${profileUsername}.jpg`}
                 />
             </div>
             <div className="flex items-center justify-center flex-col col-span-2">
                 <div className="container flex items-center">
-                    <p className="text-2xl mr-4">{username}</p>
+                    <p className="text-2xl mr-4">{profileUsername}</p>
                     {activeBtnFollow && (
                         <button
                             className="bg-blue-500 font-bold text-sm rounded text-white w-20 h-8"
